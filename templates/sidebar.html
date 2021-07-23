@@ -1,0 +1,26 @@
+{% load static %}
+<aside class="left-sidebar">
+    <!-- Sidebar scroll-->
+    <div class="scroll-sidebar">
+        <!-- User profile -->
+        <!-- End User profile text-->
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav">
+            <ul id="sidebarnav">
+                <li class="nav-small-cap"><i class="mdi mdi-dots-horizontal"></i>
+                    <span class="hide-menu">ADMIN PANEL</span></li>
+                <li class="sidebar-item"> 
+                    
+                    <a {% if request.path == '/' %}class="sidebar-link waves-effect waves-dark sidebar-link active"{% else %}class="sidebar-link waves-effect waves-dark sidebar-link"{% endif %} href="{% url 'index' %}" aria-expanded="false">
+                        <i class="mdi mdi-calendar"></i>
+                        <span class="hide-menu">Dashboard</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- End Sidebar navigation -->
+    </div>
+    <!-- End Sidebar scroll-->
+    <!-- Bottom points-->
+    <!-- End Bottom points-->
+</aside>

@@ -1,0 +1,134 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon.png' %}">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="canonical" href="https://www.wrappixel.com/templates/xtremeadmin/" />
+    <link href="{% static 'libs/chartist/dist/chartist.min.css' %}" rel="stylesheet">
+    <link href="{% static 'js/pages/chartist/chartist-init.css' %}" rel="stylesheet">
+    <link href="{% static 'libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css' %}" rel="stylesheet">
+    <link href="{% static 'libs/c3/c3.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.min.css' %}" rel="stylesheet">
+    {% block custom_head %}
+    {% endblock custom_head %}
+</head>
+<body>
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        {% include 'topbar.html' %}
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        {% include 'sidebar.html' %}
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <div class="row page-titles">
+                <div class="col-md-5 col-12 align-self-center"><br>
+                    <h3 class="text-themecolor mb-0">{% block section_title %}{% endblock section_title %}</h3><br>
+                </div>
+                <div class="col-md-7 col-12 align-self-center d-none d-md-block">
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                {% for message in messages %}
+                    <div class="alert alert-danger" role="alert">
+                        <strong>{{ message }}</strong>
+                    </div>
+                {% endfor %}
+                {% block content %}
+                {% endblock content %}
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            {% include 'footer.html' %}
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- customizer Panel -->
+    <!-- ============================================================== -->
+    <div class="chat-windows"></div>
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="{% static 'libs/jquery/dist/jquery.min.js' %}"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="{% static 'libs/popper.js/dist/umd/popper.min.js' %}"></script>
+    <script src="{% static 'libs/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <!-- apps -->
+    <script src="{% static 'js/app.min.js' %}"></script>
+    <script src="{% static 'js/app.init.js' %}"></script>
+    <script src="{% static 'js/app-style-switcher.js' %}"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="{% static 'libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js' %}"></script>
+    <script src="{% static 'extra-libs/sparkline/sparkline.js' %}"></script>
+    <!--Wave Effects -->
+    <script src="{% static 'js/waves.js' %}"></script>
+    <!--Menu sidebar -->
+    <script src="{% static 'js/sidebarmenu.js' %}"></script>
+    <!--Custom JavaScript -->
+    <script src="{% static 'js/custom.min.js' %}"></script>
+    <!--This page JavaScript -->
+    <!-- chartist chart -->
+    <script src="{% static 'libs/chartist/dist/chartist.min.js' %}"></script>
+    <script src="{% static 'libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js' %}"></script>
+    <!--c3 JavaScript -->
+    <script src="{% static 'libs/d3/dist/d3.min.js' %}"></script>
+    <script src="{% static 'libs/c3/c3.min.js' %}"></script>
+    <!-- Chart JS -->
+    <script src="{% static 'js/pages/dashboards/dashboard1.js' %}"></script>
+    <script>
+        window.setTimeout(function () {
+            $(".alert").fadeTo(500, 0).slideUp(500, function () {
+                $(this).remove();
+            });
+        }, 2500);
+    </script>
+    {% block custom_script %}
+    {% endblock custom_script %}
+</body>
+</html>
