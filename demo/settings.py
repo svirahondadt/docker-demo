@@ -10,9 +10,9 @@ STATIC_DIR = os.path.join(BASE_DIR,'static')
 SECRET_KEY = 'django-insecure-^9gd^o9_2-6k8!5k$ocu1x*-ml#w4$f5*x#abbkkliqxi!%6-^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['localhost','0.0.0.0','127.0.0.1','192.168.200.203']
+ALLOWED_HOSTS = ['localhost','0.0.0.0','127.0.0.1','192.168.200.203','demo.apptenticate.com']
 
 # Application definition
 
@@ -28,7 +28,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    # 'django.middleware.security.SecurityMiddleware',
+    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -40,11 +40,11 @@ MIDDLEWARE = [
 # SECURE_HSTS_SECONDS = 3600 # Edit in production
 # SECURE_HSTS_INCLUDE_SUBDOMAINS = True # Edit in production
 
-SESSION_COOKIE_SECURE = False # Edit in production
-CSRF_COOKIE_SECURE = False # Edit in production
-SECURE_SSL_REDIRECT = False # Edit in production
+# SESSION_COOKIE_SECURE = False # Edit in production
+# CSRF_COOKIE_SECURE = False # Edit in production
+# SECURE_SSL_REDIRECT = True # Edit in production
 
-ROOT_URLCONF = 'apptenticate.urls'
+ROOT_URLCONF = 'demo.urls'
 
 TEMPLATES = [
     {
@@ -62,18 +62,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'apptenticate.wsgi.application'
-
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
-    ],
-    "DEFAULT_AUTHENTICATION_CLASSES": (
-        "rest_framework_simplejwt.authentication.JWTAuthentication",
-        "rest_framework.authentication.SessionAuthentication",
-        "rest_framework.authentication.BasicAuthentication",
-    ),
-}
+WSGI_APPLICATION = 'demo.wsgi.application'
 
 
 # Database
@@ -132,8 +121,8 @@ STATICFILES_DIRS = [
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# SECURE_SSL_REDIRECT = True
-# SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+SECURE_SSL_REDIRECT = True
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 # Email configuration - Please edit later when deploying to prod!
 # https://docs.djangoproject.com/en/3.2/topics/email/

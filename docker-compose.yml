@@ -16,13 +16,13 @@ services:
             bash -c "sleep 10 &&
             python manage.py showmigrations &&
             python manage.py makemigrations &&
-            python manage.py migrate &&
-            python manage.py runserver 0.0.0.0:8000"
+            python manage.py collectstatic --no-input --clear &&
+            gunicorn demo.wsgi:application --timeout 120 --bind 0.0.0.0:8000"
         volumes:
             - .:/docker:rw
             - static_volume:/home/ubuntu/docker/staticfiles/
         ports:
-            - 5000:8000
+            - 8080:8000
         depends_on:
             - demo_db
         restart: "always"    
